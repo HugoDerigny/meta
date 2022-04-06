@@ -48,8 +48,8 @@ export const Projects: FC<ProjectsProps> = ({ projects }) => {
 				modules={[EffectCreative, Keyboard, Scrollbar, Navigation]}
 				className='flex place-items-center'
 			>
-				{projects.map((project) => (
-					<SwiperSlide>
+				{projects.map((project, key) => (
+					<SwiperSlide key={key}>
 						<ProjectCard project={project} />
 					</SwiperSlide>
 				))}
@@ -89,8 +89,10 @@ const ProjectCard: FC<ProjectProps> = ({ project }) => {
 				<p className='text-gray-700'>{project.summary}</p>
 				<p className='text-gray-500 text-xs mt-8 mb-2'>Tags</p>
 				<div className='flex gap-2'>
-					{project.tags.map((label) => (
-						<span className='rounded-full bg-gray-200 px-2 py-1 text-xs'>{label}</span>
+					{project.tags.map((label, key) => (
+						<span key={key} className='rounded-full bg-gray-200 px-2 py-1 text-xs'>
+							{label}
+						</span>
 					))}
 				</div>
 			</article>

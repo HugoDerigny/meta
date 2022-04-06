@@ -1,6 +1,6 @@
 import { Hero, Projects } from '@components/organisms'
-import { Subtitle, Title } from '@components/atoms'
-import React, { FC, useState } from 'react'
+import { Title } from '@components/atoms'
+import React, { FC } from 'react'
 import { InferGetServerSidePropsType } from 'next'
 import { ProjectType, SkillType } from '@controllers/Notion/types'
 import { fetcher } from '../src/utils'
@@ -12,7 +12,7 @@ type Fetcher = {
 }
 
 export const getServerSideProps = async ({ req }) => {
-	const data = await fetcher<Fetcher>(`http://${req.headers.host}/api/projects`)
+	const data = await fetcher<Fetcher>(`https://${req.headers.host}/api/projects`)
 
 	return {
 		props: data,
@@ -64,8 +64,8 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
 					<article className='bg-gradient-to-br from-[#ffbf00] to-[#ffd447] shadow-lg flex gap-8 shadow-amber-400 p-4 rounded-xl'>
 						{skills
 							.filter(({ isFavorite }) => isFavorite)
-							.map(({ label, imageUrl }) => (
-								<Tooltip content={label} offset={4}>
+							.map(({ label, imageUrl }, key) => (
+								<Tooltip content={label} offset={4} key={key}>
 									<img
 										className='w-16 h-16 bg-white object-contain p-2 rounded-lg'
 										src={imageUrl}
@@ -78,8 +78,8 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
 				<article className='py-4 flex justify-center flex-wrap mx-64 my-4 gap-8'>
 					{skills
 						.filter(({ isFavorite }) => !isFavorite)
-						.map(({ label, imageUrl }) => (
-							<Tooltip content={label} offset={4}>
+						.map(({ label, imageUrl }, key) => (
+							<Tooltip content={label} offset={4} key={key}>
 								<img
 									className='w-16 h-16 bg-white object-contain p-2 rounded-lg'
 									src={imageUrl}
@@ -111,7 +111,7 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
 					</a>
 				</Title>
 				<p className='text-gray-200 mt-8 text-xs font-thin tracking-wide'>
-					Construit à l'aide de Next.JS, Notion API et TailwindCSS par Hugo DERIGNY.
+					Construit à l&apos;aide de Next.JS, Notion API et TailwindCSS par Hugo DERIGNY.
 				</p>
 			</footer>
 		</>
