@@ -1,0 +1,121 @@
+import { Hero, Projects } from '@components/organisms'
+import { Subtitle, Title } from '@components/atoms'
+import React, { FC, useState } from 'react'
+import { InferGetServerSidePropsType } from 'next'
+import { ProjectType, SkillType } from '@controllers/Notion/types'
+import { fetcher } from '../src/utils'
+import { Tooltip } from '@components/atoms/Tooltip'
+
+type Fetcher = {
+	projects: ProjectType[]
+	skills: SkillType[]
+}
+
+export const getServerSideProps = async ({ req }) => {
+	const data = await fetcher<Fetcher>(`http://${req.headers.host}/api/projects`)
+
+	return {
+		props: data,
+	}
+}
+
+export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ projects, skills }) => {
+	return (
+		<>
+			<Hero />
+			<section
+				id='resume'
+				className='autumn-pattern shadow-xl sw-screen h-auto px-32 py-16 pb-32 mt-[52%] rounded-t-3xl'
+			>
+				<Title>Hello !</Title>
+				<p className='text-gray-300 text-lg text-justify'>
+					<span>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab atque consequatur corporis
+						dolores eum nesciunt qui quis! At consequatur culpa eos ex fugiat illum impedit repellendus
+						rerum sit, veniam!
+					</span>
+					<span>
+						Accusantium adipisci aliquid blanditiis dignissimos dolorum ducimus earum, eos exercitationem
+						harum illo impedit ipsam iusto laudantium libero modi molestias natus odio quasi quia tempore
+						tenetur totam voluptate? Excepturi, nihil, voluptates.
+					</span>
+					<span>
+						Atque, culpa delectus dolor ducimus eligendi et, exercitationem expedita harum illum ipsa iusto
+						laborum magnam minima modi molestias nihil omnis pariatur perferendis possimus, praesentium
+						provident repudiandae tenetur unde velit voluptas.
+					</span>
+				</p>
+			</section>
+			<div className='h-16 w-full bg-blue-900 absolute skew-y-2 -mt-8' />
+			<section id='projets' className='w-screen h-auto p-32 bg-gray-100 flex flex-col justify-center'>
+				<Title black>Mes projets</Title>
+				<div className='w-full mt-8'>
+					<Projects projects={projects} />
+				</div>
+			</section>
+			<div className='h-16 w-full bg-teal-700 absolute -skew-y-1 -mt-12' />
+			<section
+				id='competences'
+				className='graph-pattern justify-center place-items-center flex flex-col h-auto p-32 bg-teal-800'
+			>
+				<Title>Compétences</Title>
+				<div className='w-fit mx-auto'>
+					<p className='text-amber-400  uppercase font-thin tracking-wide'>Spécialisation</p>
+					<article className='bg-gradient-to-br from-[#ffbf00] to-[#ffd447] shadow-lg flex gap-8 shadow-amber-400 p-4 rounded-xl'>
+						{skills
+							.filter(({ isFavorite }) => isFavorite)
+							.map(({ label, imageUrl }) => (
+								<Tooltip content={label} offset={4}>
+									<img
+										className='w-16 h-16 bg-white object-contain p-2 rounded-lg'
+										src={imageUrl}
+										alt={label}
+									/>
+								</Tooltip>
+							))}
+					</article>
+				</div>
+				<article className='py-4 flex justify-center flex-wrap mx-64 my-4 gap-8'>
+					{skills
+						.filter(({ isFavorite }) => !isFavorite)
+						.map(({ label, imageUrl }) => (
+							<Tooltip content={label} offset={4}>
+								<img
+									className='w-16 h-16 bg-white object-contain p-2 rounded-lg'
+									src={imageUrl}
+									alt={label}
+								/>
+							</Tooltip>
+						))}
+				</article>
+			</section>
+			<footer id='contact' className='bg-black flex place-items-center flex-col px-8 py-4 pt-16'>
+				<Title>
+					Me contacter par{' '}
+					<a
+						className='border hover:bg-white text-white hover:text-black transition-all border-white rounded p-2 leading-none'
+						href='mailto:hugo.derigny@gmail.com'
+					>
+						m@il
+					</a>
+					ou sur
+					<a href='https://www.linkedin.com/in/hugo-derigny/' rel='noopener noreferrer'>
+						<svg
+							className='w-12 h-12 text-gray-200 hover:text-blue-500 transition cursor-pointer'
+							fill='currentColor'
+							xmlns='http://www.w3.org/2000/svg'
+							viewBox='0 0 448 512'
+						>
+							<path d='M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z' />
+						</svg>
+					</a>
+				</Title>
+				<p className='text-gray-200 mt-8 text-xs font-thin tracking-wide'>
+					Construit à l'aide de Next.JS, Notion API et TailwindCSS par Hugo DERIGNY.
+				</p>
+			</footer>
+		</>
+	)
+}
+
+export default Home

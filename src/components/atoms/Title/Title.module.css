@@ -1,0 +1,11 @@
+.title {
+    @apply text-3xl font-extrabold mb-4 flex place-items-center gap-2;
+}
+
+.title__light {
+    @apply text-gray-50;
+}
+
+.title__dark {
+    @apply text-gray-800;
+}

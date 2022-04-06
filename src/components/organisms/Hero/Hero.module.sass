@@ -1,0 +1,61 @@
+.hero
+	background-position: center center
+	background-size: cover
+	background-image: url("./bg.jpg")
+	@apply w-screen h-screen fixed -z-10 top-0 left-0 flex flex-col justify-center place-items-center
+
+	&:after
+		content: ""
+		background-image: url("https://grainy-gradients.vercel.app/noise.svg")
+		animation: grain 8s steps(10) infinite
+		height: 300%
+		width: 300%
+		@apply opacity-50 fixed
+
+	&__title
+		@apply text-6xl font-extrabold text-gray-900 border-b border-gray-700 py-8 px-16
+
+
+	&__subtitle
+		@apply text-2xl font-bold text-gray-800 p-8
+
+
+@keyframes grain
+	0%, 100%
+		transform: translate(0, 0)
+	10%
+		transform: translate(-5%, -10%)
+	20%
+		transform: translate(-15%, 5%)
+	30%
+		transform: translate(7%, -25%)
+	40%
+		transform: translate(-5%, 25%)
+	50%
+		transform: translate(-15%, 10%)
+	60%
+		transform: translate(15%, 0%)
+	70%
+		transform: translate(0%, 15%)
+	80%
+		transform: translate(3%, 25%)
+	90%
+		transform: translate(-10%, 10%)
+
+
+.navbar
+	@apply w-1/2 mt-8 uppercase font-thin tracking-wider z-50
+
+	&__li
+		@apply inline text-center
+
+	&__link
+		@apply inline-block w-1/4 cursor-pointer py-4
+
+	&__slider
+		@apply h-1 w-0 bg-orange-500 border-none transition-all duration-200 rounded-full
+
+@for $i from 1 through 4
+	.navbar li:nth-child(#{$i}):hover ~ .navbar__slider
+		margin-left: ($i - 1)*25%
+		width: 25%

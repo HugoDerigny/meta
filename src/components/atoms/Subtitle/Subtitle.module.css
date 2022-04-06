@@ -1,0 +1,11 @@
+.subtitle {
+    @apply text-xl font-extrabold mb-4;
+}
+
+.subtitle__light {
+    @apply text-gray-300;
+}
+
+.subtitle__dark {
+    @apply text-gray-700;
+}

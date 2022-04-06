@@ -1,0 +1,11 @@
+.tabs {
+    @apply flex flex-row text-white mb-12 tracking-wide
+}
+
+.tab a {
+    @apply p-4 border-b hover:border-b-4 text-gray-500  transition-all
+}
+
+.tab.active a {
+    @apply border-b-4 text-rose-600 border-rose-600
+}
