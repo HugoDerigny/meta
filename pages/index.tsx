@@ -5,7 +5,6 @@ import { InferGetServerSidePropsType } from 'next'
 import { ProjectType, SkillType } from '@controllers/Notion/types'
 import { fetcher } from '../src/utils'
 import { Tooltip } from '@components/atoms/Tooltip'
-import { Head } from 'next/document'
 
 type Fetcher = {
 	projects: ProjectType[]
