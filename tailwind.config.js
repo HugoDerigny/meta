@@ -8,7 +8,8 @@ module.exports = {
 				gray: colors.stone,
 			},
 			fontFamily: {
-				sans: ['"Josefin Sans"'],
+				sans: ['Montserrat', 'sans-serif'],
+				cursive: ['Satisfy', 'cursive'],
 			},
 		},
 	},

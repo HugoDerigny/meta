@@ -12,7 +12,7 @@ type Fetcher = {
 }
 
 export const getServerSideProps = async ({ req }) => {
-	const data = await fetcher<Fetcher>(`https://${req.headers.host}/api/projects`)
+	const data = await fetcher<Fetcher>(`http://${req.headers.host}/api/projects`)
 
 	return {
 		props: data,
@@ -27,24 +27,18 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
 				id='resume'
 				className='autumn-pattern shadow-xl sw-screen h-auto px-32 py-16 pb-32 mt-[52%] rounded-t-3xl'
 			>
-				<Title>Hello !</Title>
-				<p className='text-gray-300 text-lg text-justify'>
-					<span>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab atque consequatur corporis
-						dolores eum nesciunt qui quis! At consequatur culpa eos ex fugiat illum impedit repellendus
-						rerum sit, veniam!
-					</span>
-					<span>
-						Accusantium adipisci aliquid blanditiis dignissimos dolorum ducimus earum, eos exercitationem
-						harum illo impedit ipsam iusto laudantium libero modi molestias natus odio quasi quia tempore
-						tenetur totam voluptate? Excepturi, nihil, voluptates.
-					</span>
-					<span>
-						Atque, culpa delectus dolor ducimus eligendi et, exercitationem expedita harum illum ipsa iusto
-						laborum magnam minima modi molestias nihil omnis pariatur perferendis possimus, praesentium
-						provident repudiandae tenetur unde velit voluptas.
-					</span>
-				</p>
+				<Title>{new Date().getHours() > 19 ? 'Bonsoir' : 'Bonjour'} !</Title>
+				<article className='text-gray-300 text-lg space-y-4 text-justify flex flex-col leading-relaxed text-justify'>
+					<p>
+						Récemment diplômé de l'école d'ingénieur <span className='underline'>IMT Nord Europe</span> en
+						profil <span>Informatique</span>, je suis à la recherche d'un CDI en tant que{' '}
+						<span className='underline'>développeur fullstack</span>.
+					</p>
+					<p>
+						D'origine compiègnoise, je suis venu à Lille pour mes études et je souhaites y rester pour ma
+						vie future. Je suis ouvert à tout type de poste, full-remote comme présentiel.
+					</p>
+				</article>
 			</section>
 			<div className='h-16 w-full bg-blue-900 absolute skew-y-2 -mt-8' />
 			<section id='projets' className='w-screen h-auto p-32 bg-gray-100 flex flex-col justify-center'>
@@ -96,7 +90,7 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
 						className='border hover:bg-white text-white hover:text-black transition-all border-white rounded p-2 leading-none'
 						href='mailto:hugo.derigny@gmail.com'
 					>
-						m@il
+						mail
 					</a>
 					ou sur
 					<a href='https://www.linkedin.com/in/hugo-derigny/' rel='noopener noreferrer'>

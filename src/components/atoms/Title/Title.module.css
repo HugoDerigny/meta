@@ -1,5 +1,5 @@
 .title {
-    @apply text-3xl font-extrabold mb-4 flex place-items-center gap-2;
+    @apply text-4xl font-extrabold mb-4 flex place-items-center gap-2 font-cursive;
 }
 
 .title__light {

@@ -5,7 +5,7 @@ import { computeStyles } from '../../../utils'
 export const Hero: FC<any> = () => {
 	return (
 		<section className={styles.hero}>
-			<h1 className={computeStyles(styles.hero__title, 'focus-in-expand')}>Hugo DERIGNY</h1>
+			<h1 className={computeStyles(styles.hero__title)}>Hugo Derigny</h1>
 			<nav className={styles.navbar}>
 				<ul>
 					<li className={computeStyles(styles.navbar__li, styles.navbar__li__first)}>
