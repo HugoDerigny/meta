@@ -30,13 +30,14 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
 				<Title>{new Date().getHours() > 19 ? 'Bonsoir' : 'Bonjour'} !</Title>
 				<article className='text-gray-300 text-lg space-y-4 text-justify flex flex-col leading-relaxed text-justify'>
 					<p>
-						Récemment diplômé de l'école d'ingénieur <span className='underline'>IMT Nord Europe</span> en
-						profil <span>Informatique</span>, je suis à la recherche d'un CDI en tant que{' '}
+						Récemment diplômé de l&apos;école d&apos;ingénieur{' '}
+						<span className='underline'>IMT Nord Europe</span> en profil <span>Informatique</span>, je suis
+						à la recherche d&apos;un CDI en tant que{' '}
 						<span className='underline'>développeur fullstack</span>.
 					</p>
 					<p>
-						D'origine compiègnoise, je suis venu à Lille pour mes études et je souhaites y rester pour ma
-						vie future. Je suis ouvert à tout type de poste, full-remote comme présentiel.
+						D&apos;origine compiègnoise, je suis venu à Lille pour mes études et je souhaites y rester pour
+						ma vie future. Je suis ouvert à tout type de poste, full-remote comme présentiel.
 					</p>
 				</article>
 			</section>
