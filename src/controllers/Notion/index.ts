@@ -13,7 +13,8 @@ export async function GetProjects(): Promise<ProjectType[]> {
 			filter: { property: 'Visible', checkbox: { equals: true } },
 		})
 		// @ts-ignore
-		return response.results.map(({ properties: { Name, Groupe, Description, Image, Tags } }) => ({
+		return response.results.map(({ properties: { Name, Groupe, Description, Image, Tags, URL } }) => ({
+			url: URL.url ?? '#',
 			title: Name.title[0].text.content,
 			group: Groupe.select.name,
 			summary: Description.rich_text[0].text.content,

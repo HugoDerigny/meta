@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { EffectCreative, Scrollbar, Keyboard, Navigation } from 'swiper'
+import { EffectCreative, Keyboard, Navigation, Scrollbar } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/effect-creative'
 import 'swiper/css/scrollbar'
@@ -85,10 +85,25 @@ const ProjectCard: FC<ProjectProps> = ({ project }) => {
 				/>
 			</figure>
 			<article>
-				<Title black>{project.title}</Title>
+				<div className='flex justify-between'>
+					<Title black>{project.title}</Title>
+					{project.url !== '#' && (
+						<a
+							href={project.url}
+							target='_blank'
+							rel='noopener noreferrer'
+							className='self-center px-2 py-1 text-sm rounded-full bg-indigo-100 hover:bg-indigo-200 cursor-pointer text-indigo-600'
+						>
+							Voir
+						</a>
+					)}
+				</div>
 				<p className='text-gray-700'>{project.summary}</p>
 				<p className='text-gray-500 text-xs mt-8 mb-2'>Tags</p>
 				<div className='flex gap-2'>
+					<span className='rounded-full bg-purple-200 text-purple-800 px-2 py-1 text-xs'>
+						{project.group}
+					</span>
 					{project.tags.map((label, key) => (
 						<span key={key} className='rounded-full bg-gray-200 px-2 py-1 text-xs'>
 							{label}

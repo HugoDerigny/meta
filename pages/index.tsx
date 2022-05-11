@@ -25,7 +25,7 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
 			<Hero />
 			<section
 				id='resume'
-				className='autumn-pattern shadow-xl sw-screen h-auto px-32 py-16 pb-32 mt-[52%] rounded-t-3xl'
+				className='autumn-pattern shadow-xl sw-screen h-auto p-8 pb-16 mt-[208%] lg:px-32 lg:py-16 lg:pb-32 lg:mt-[52%] rounded-t-3xl'
 			>
 				<Title>{new Date().getHours() > 19 ? 'Bonsoir' : 'Bonjour'} !</Title>
 				<article className='text-gray-300 text-lg space-y-4 text-justify flex flex-col leading-relaxed text-justify'>
@@ -42,13 +42,17 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
 				</article>
 			</section>
 			<div className='h-16 w-full bg-blue-900 absolute skew-y-2 -mt-8' />
-			<section id='projets' className='w-screen h-auto p-32 bg-gray-100 flex flex-col justify-center'>
+			<section
+				id='projets'
+				className='w-screen h-auto px-8 pt-24 lg:p-32 bg-gray-100 flex flex-col justify-center'
+			>
 				<Title black>Mes projets</Title>
 				<div className='w-full mt-8'>
 					<Projects projects={projects} />
 				</div>
 			</section>
-			<div className='h-16 w-full bg-teal-700 absolute -skew-y-1 -mt-12' />
+
+			<div className='h-16 w-full bg-teal-600 absolute -skew-y-1 -mt-12' />
 			<section
 				id='competences'
 				className='graph-pattern justify-center place-items-center flex flex-col h-auto p-32 bg-teal-800'

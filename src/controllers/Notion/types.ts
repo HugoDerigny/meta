@@ -1,4 +1,5 @@
 export interface ProjectType {
+	url: string
 	title: string
 	imageUrl: string
 	summary: string
