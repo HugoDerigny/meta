@@ -49,7 +49,7 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
                 <article id='articles'>
                     <Title black>Articles publiés ✍🏻</Title>
                     <div className="w-full mt-8">
-                        <p>Rien à voir pour l'instant !</p>
+                        <p>Rien à voir pour l&pos;instant !</p>
                     </div>
                 </article>
                 <article id='projets'>
