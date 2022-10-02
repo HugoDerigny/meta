@@ -1,17 +1,17 @@
 import styles from './Hero.module.css'
-import { FC } from 'react'
-import { computeStyles } from '../../../utils'
+import {FC} from 'react'
+import {computeStyles} from '../../../utils'
 
 export const Hero: FC<any> = () => {
 	return (
 		<section className={styles.hero}>
 			<h1 className={styles.hero__title}>Hugo Derigny</h1>
-			<h2 className={styles.hero__subtitle}>Ingénieur web fullstack et gestion de projet</h2>
+			<h2 className={styles.hero__subtitle}>Ingénieur web fullstack et product owner</h2>
 			<nav className={styles.navbar}>
 				<ul>
 					<li className={computeStyles(styles.navbar__li, styles.navbar__li__first)}>
-						<a href='#resume' className={styles.navbar__link}>
-							Résumé
+						<a href='#articles' className={styles.navbar__link}>
+							Articles
 						</a>
 					</li>
 					<li className={computeStyles(styles.navbar__li, styles.navbar__li__second)}>
@@ -20,8 +20,8 @@ export const Hero: FC<any> = () => {
 						</a>
 					</li>
 					<li className={styles.navbar__li}>
-						<a href='#competences' className={styles.navbar__link}>
-							Compétences
+						<a href='#stack' className={styles.navbar__link}>
+							Stack
 						</a>
 					</li>
 					<li className={styles.navbar__li}>

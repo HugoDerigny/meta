@@ -5,12 +5,10 @@
 	@apply w-screen h-screen fixed -z-10 top-0 left-0 flex flex-col justify-center place-items-center
 
 	&__title
-	@apply text-5xl lg
-		:text-7xl font-extrabold text-gray-900 p-4 pb-8 lg:py-8 lg:px-16 font-cursive
-
+		@apply text-5xl lg:text-7xl font-extrabold text-gray-900 p-4 pb-8 lg:py-8 lg:px-16 font-cursive
 
 	&__subtitle
-	@apply text-2xl bg-gradient-to-r from-purple-700 to-orange-500 text-transparent bg-clip-text px-2 pb-8 pt-2 font-cursive
+		@apply text-2xl bg-gradient-to-r from-purple-700/30 to-orange-500/30 backdrop-blur backdrop-filter text-white rounded-md py-2 px-4 font-cursive
 
 
 @keyframes grain
@@ -40,13 +38,13 @@
 	@apply w-1/2 mt-8 uppercase font-thin tracking-wider z-50
 
 	&__li
-	@apply inline text-center flex-1
+		@apply inline text-center flex-1
 
 	&__link
-	@apply inline-block w-1 / 5 cursor-pointer py-4
+		@apply inline-block w-1/5 cursor-pointer py-4
 
 	&__slider
-		@apply h-1 w-0 bg-orange-500 border-none transition-all duration-200 rounded-full
+		@apply h-1 w-0 bg-gradient-to-r from-purple-700/30 to-orange-500/30 border-none transition-all duration-200 rounded-full
 
 @for $i from 1 through 5
 	.navbar li:nth-child(#{$i}):hover ~ .navbar__slider
