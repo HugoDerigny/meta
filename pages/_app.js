@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
 		<>
 			<Head>
 				<title>Hugo DERIGNY | Portfolio</title>
-				<meta name='description' content='Ingénieur web fullstack spécialisé en JS à Lille et ses alentours.' />
+				<meta name='description' content='Ingénieur web fullstack spécialisé en Javascript/Typescript à Lille et ses alentours.' />
 				<meta name='keywords' content='dev, react, fullstack, fr, hugo, derigny, nextjs, nestjs, nest' />
 				<meta name='robots' content='index, follow' />
 				<meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />

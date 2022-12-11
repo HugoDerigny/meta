@@ -1,6 +1,5 @@
 import styles from './Hero.module.css'
 import {FC} from 'react'
-import {computeStyles} from '../../../utils'
 
 export const Hero: FC<any> = () => {
 	return (
@@ -9,14 +8,14 @@ export const Hero: FC<any> = () => {
 			<h2 className={styles.hero__subtitle}>Ingénieur web fullstack et product owner</h2>
 			<nav className={styles.navbar}>
 				<ul>
-					<li className={computeStyles(styles.navbar__li, styles.navbar__li__first)}>
-						<a href='#articles' className={styles.navbar__link}>
-							Articles
-						</a>
-					</li>
-					<li className={computeStyles(styles.navbar__li, styles.navbar__li__second)}>
+					<li className={styles.navbar__li}>
 						<a href='#projets' className={styles.navbar__link}>
 							Projets
+						</a>
+					</li>
+					<li className={styles.navbar__li}>
+						<a href='#experiences' className={styles.navbar__link}>
+							Expériences
 						</a>
 					</li>
 					<li className={styles.navbar__li}>

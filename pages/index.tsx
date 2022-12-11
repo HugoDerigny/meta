@@ -1,25 +1,27 @@
-import {Hero, Projects} from '@components/organisms'
+import {Experiences, Hero, Projects} from '@components/organisms'
 import {Title} from '@components/atoms'
 import React, {FC} from 'react'
 import {InferGetServerSidePropsType} from 'next'
-import {ProjectType, SkillType} from '@controllers/Notion/types'
+import {ExperienceType, ProjectType, SkillType} from '@controllers/Notion/types'
 import {fetcher} from '../src/utils'
 import {Tooltip} from '@components/atoms/Tooltip'
 
 type Fetcher = {
     projects: ProjectType[]
     skills: SkillType[]
+    blogs: [],
+    experiences: ExperienceType[]
 }
 
 export const getServerSideProps = async ({req}) => {
-    const data = await fetcher<Fetcher>(`http://${req.headers.host}/api/projects`)
+    const data = await fetcher<Fetcher>(`http://${req.headers.host}/api/data`)
 
     return {
         props: data,
     }
 }
 
-export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({projects, skills}) => {
+export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({projects, skills, experiences}) => {
     return (
         <>
             <Hero/>
@@ -37,8 +39,9 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
                         <span className='underline'>développeur fullstack</span>.
                     </p>
                     <p>
-                        D&apos;origine compiègnoise, je suis venu à Lille pour mes études et je souhaites y rester pour
-                        ma vie future. Je suis ouvert à tout type de poste, full-remote comme présentiel.
+                        D&apos;origine compiègnoise, je suis venu à Lille pour mes études et je souhaite y rester pour
+                        ma vie future. Je suis ouvert à tout type de poste, full-remote comme présentiel, à Lille et ses
+                        alentours ou bien à Paris.
                     </p>
                 </article>
             </section>
@@ -46,20 +49,63 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
             <section
                 className='architect-pattern w-screen h-auto p-8 py-32 lg:px-32 bg-gray-100 flex flex-col justify-center space-y-8'
             >
-                <article id='articles'>
-                    <Title black>Articles publiés ✍🏻</Title>
-                    <div className="w-full mt-8">
-                        <p>Rien à voir pour l&apos;instant !</p>
-                    </div>
-                </article>
+                {/*<article id='articles'>*/}
+                {/*    <Title black>Articles publiés ✍🏻</Title>*/}
+                {/*    <div className="w-full mt-8">*/}
+                {/*        <p>Rien à voir pour l&apos;instant !</p>*/}
+                {/*    </div>*/}
+                {/*</article>*/}
                 <article id='projets'>
                     <Title black>Mes projets 🏗</Title>
                     <div className='w-full mt-8'>
                         <Projects projects={projects}/>
                     </div>
                 </article>
+                <article id="parcours">
+                    <Title black>Parcours scolaire 🏫</Title>
+                    <div className="flex flex-wrap pb-4">
+                        <div className='w-full lg:w-1/2 shrink-0 p-4 snap-center'>
+                            <div className="bg-white shadow-xl rounded-xl p-6 flex flex-col gap-4 h-full">
+                                <header className='flex items-center space-x-4'>
+                                    <span
+                                        className='rounded-full flex justify-center items-center bg-yellow-400 h-10 w-10 text-xl'>🏫</span>
+                                    <div>
+                                        <h3 className='text-2xl font-cursive leading-relaxed'>Dut Informatique (bac
+                                            +2)</h3>
+                                        <p className='text-yellow-400 text-sm uppercase tracking-wide'>IUT A Villeneuve
+                                            d'Ascq</p>
+                                    </div>
+                                </header>
+                                <p className='text-gray-700 text-sm whitespace-normal text-justify leading-relaxed line-clamp-5'>
+                                    L'IMT Nord Europe est une école d'ingénieur située à Lille (Villeneuve d'Ascq).
+                                </p>
+                            </div>
+                        </div>
+                        <div className='w-full lg:w-1/2 shrink-0 p-4 snap-center'>
+                            <div
+                                className="bg-white shadow-xl rounded-xl p-6 flex flex-col gap-4 h-full border-4 border-yellow-300 shadow-lg shadow-yellow-300/50">
+                                <header className='flex items-center space-x-4'>
+                                    <span
+                                        className='rounded-full flex justify-center items-center bg-yellow-400 h-10 w-10 text-xl'>🎓</span>
+                                    <div>
+                                        <h3 className='text-2xl font-cursive leading-relaxed'>Ingénieur
+                                            Informatique</h3>
+                                        <p className='text-yellow-400 text-sm uppercase tracking-wide'>IMT Nord
+                                            Europe</p>
+                                    </div>
+                                </header>
+                                <p className='text-gray-700 text-sm whitespace-normal text-justify leading-relaxed whitespace-normal'>
+                                    L'IMT Nord Europe est une école d'ingénieur située à Lille (Villeneuve d'Ascq).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article id="experiences">
+                    <Title black>Expériences professionnelles 💻</Title>
+                    <Experiences experiences={experiences}/>
+                </article>
             </section>
-
             <div className='h-16 w-full bg-teal-600 absolute -skew-y-1 -mt-12'/>
             <section
                 id='stack'
@@ -67,7 +113,7 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
             >
                 <Title>Stack technique 🔧</Title>
                 <div className='w-fit mx-auto'>
-                    <p className='text-amber-400  uppercase font-thin tracking-wide'>Spécialisation</p>
+                    <p className='text-amber-400 uppercase font-thin tracking-wide'>Spécialisation 🌟</p>
                     <article
                         className='bg-gradient-to-br from-[#ffbf00] to-[#ffd447] shadow-lg flex flex-wrap justify-start gap-8 shadow-amber-400 p-4 rounded-xl'>
                         {skills
@@ -98,27 +144,27 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
                 </article>
             </section>
             <footer id='contact' className='bg-black flex place-items-center text-center flex-col px-8 py-4 pt-16'>
-                    <Title>
-                        Me contacter par{' '}
-                        <a
-                            className='border hover:bg-white text-white hover:text-black transition-all border-white rounded p-2 leading-none'
-                            href='mailto:hugo.derigny@gmail.com'
+                <Title>
+                    Me contacter par{' '}
+                    <a
+                        className='border hover:bg-white text-white hover:text-black transition-all border-white rounded p-2 leading-none'
+                        href='mailto:hugo.derigny@gmail.com'
+                    >
+                        mail
+                    </a>
+                    <span>ou sur</span>
+                    <a href='https://www.linkedin.com/in/hugo-derigny/' rel='noopener noreferrer'>
+                        <svg
+                            className='w-12 h-12 text-gray-200 hover:text-blue-500 transition cursor-pointer'
+                            fill='currentColor'
+                            xmlns='http://www.w3.org/2000/svg'
+                            viewBox='0 0 448 512'
                         >
-                            mail
-                        </a>
-                        <span>ou sur</span>
-                        <a href='https://www.linkedin.com/in/hugo-derigny/' rel='noopener noreferrer'>
-                            <svg
-                                className='w-12 h-12 text-gray-200 hover:text-blue-500 transition cursor-pointer'
-                                fill='currentColor'
-                                xmlns='http://www.w3.org/2000/svg'
-                                viewBox='0 0 448 512'
-                            >
-                                <path
-                                    d='M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z'/>
-                            </svg>
-                        </a>
-                    </Title>
+                            <path
+                                d='M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z'/>
+                        </svg>
+                    </a>
+                </Title>
                 <p className='text-gray-200 mt-8 text-xs font-thin tracking-wide'>
                     Construit à l&apos;aide de Next.JS, Notion API et TailwindCSS par Hugo DERIGNY.
                 </p>

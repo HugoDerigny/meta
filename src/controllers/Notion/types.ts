@@ -1,3 +1,5 @@
+export type RichTextType = Array<{ plain_text: string, annotations: { bold: boolean, italic: boolean, underline: boolean }}>
+
 export interface ProjectType {
 	url: string
 	title: string
@@ -11,4 +13,13 @@ export interface SkillType {
 	label: string
 	imageUrl: string
 	isFavorite: boolean
+}
+
+export interface ExperienceType {
+	label: string
+	from: string
+	to: string
+	company: string
+	summary: RichTextType
+	companyLogo: string
 }

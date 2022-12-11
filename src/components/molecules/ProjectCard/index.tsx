@@ -17,7 +17,7 @@ export const ProjectCard: FC<ProjectProps> = ({ project }) => {
 					loading='lazy'
 				/>
 			</figure>
-			<article className='flex flex-col space-y-4 h-full  justify-between'>
+			<article className='flex flex-col space-y-4 h-full justify-between'>
 				<div>
 					<h3 className='font-cursive text-2xl leading-relaxed'>
 						{project.url ? (
