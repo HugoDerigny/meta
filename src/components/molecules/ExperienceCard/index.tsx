@@ -1,6 +1,6 @@
 import {ExperienceType, RichTextType} from "@controllers/Notion/types";
 import Image from "next/image";
-import React, {createElement} from "react";
+import React from "react";
 
 type Props = {
     experience: ExperienceType
@@ -17,31 +17,31 @@ function formatExperienceDate(dateString: string) {
 function parseNotionRichTextToHTML(richText: RichTextType) {
     const nodes = []
 
-    for (const text of richText) {
+    for (const { annotations, plain_text } of richText) {
         switch (true) {
-            case text.plain_text === '\n':
-                nodes.push(createElement('br'))
+            case plain_text === '\n':
+                nodes.push(<br/>)
                 break
 
-            case text.annotations.bold:
-                nodes.push(createElement('strong', {children: text.plain_text}))
+            case annotations.bold:
+                nodes.push(<strong>{plain_text}</strong>)
                 break
 
-            case text.annotations.italic:
-                nodes.push(createElement('i', {children: text.plain_text}))
+            case annotations.italic:
+                nodes.push(<i>{plain_text}</i>)
                 break
 
-            case text.annotations.underline:
-                nodes.push(createElement('u', {children: text.plain_text}))
+            case annotations.underline:
+                nodes.push(<u>{plain_text}</u>)
                 break
 
             default:
-                nodes.push(createElement('span', {children: text.plain_text}))
+                nodes.push(<span>{plain_text}</span>)
                 break
         }
     }
 
-    return createElement('p', {children: nodes})
+    return <p>{nodes.map(n => n)}</p>
 }
 
 export function ExperienceCard({experience: {label, company, companyLogo, to, from, summary}}: Props) {
