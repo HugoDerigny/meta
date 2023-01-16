@@ -13,6 +13,7 @@ export const ProjectCard: FC<ProjectProps> = ({ project }) => {
 				<Image
 					src={project?.imageUrl ?? 'https://via.placeholder.com/1920x1080'}
 					layout='fill'
+					alt='Image descriptive'
 					className='rounded-lg'
 					loading='lazy'
 				/>
@@ -54,7 +55,6 @@ export const ProjectCard: FC<ProjectProps> = ({ project }) => {
 					</p>
 				</div>
 				<footer>
-					<small className='block text-gray-500 text-xs mb-2'>Tags</small>
 					<section className='flex gap-2 overflow-auto'>
 						<span className='rounded-full bg-purple-200 text-purple-800 px-2 py-1 text-xs'>
 							{project.group}

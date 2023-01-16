@@ -8,9 +8,11 @@ type Props = {
 
 export function Experiences({experiences}: Props) {
     return (
-        <div className="flex justify-center pt-4">
-            <ol className="border-l-2 border-indigo-600">
+        <div className="py-4">
+            <ol className="flex snap-mandatory border-t-2 border-indigo-600 snap-x overflow-x-auto overflow-y-visible -mx-32">
+                <li className='snap-center snap-always flex w-1/3 flex-shrink-0 '/>
                 {experiences.map((exp, idx) => <ExperienceCard experience={exp} key={idx}/>)}
+                <li className='snap-center snap-always flex w-1/3 flex-shrink-0 '/>
             </ol>
         </div>
     );

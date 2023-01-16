@@ -5,7 +5,7 @@
 	@apply w-screen h-screen fixed -z-10 top-0 left-0 flex flex-col justify-center place-items-center
 
 	&__title
-		@apply text-5xl lg:text-7xl font-extrabold text-gray-900 p-4 pb-8 lg:py-8 lg:px-16 font-cursive
+		@apply text-5xl lg:text-7xl text-gray-900 p-4 pb-8 lg:py-8 lg:px-16 font-cursive
 
 	&__subtitle
 		@apply text-2xl bg-gradient-to-r text-center mx-8 lg:mx-0 from-purple-700/30 to-orange-500/30 backdrop-blur backdrop-filter text-white rounded-md py-2 px-4 font-cursive
@@ -35,13 +35,10 @@
 
 
 .navbar
-	@apply w-1/2 mt-8 uppercase font-thin tracking-wider z-50
+	@apply w-1/2 mt-8 uppercase font-thin tracking-wider z-50 text-xl
 
 	ul
-		@apply flex flex-col lg:flex-row
+		@apply flex flex-col lg:flex-row justify-evenly
 
 	&__li
-		@apply inline text-center flex-1
-
-	&__link
-		@apply inline-block w-full lg:w-1/5 cursor-pointer py-4
+		@apply hover:underline underline-offset-8 decoration-4 decoration-orange-600/20

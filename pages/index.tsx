@@ -5,6 +5,7 @@ import {InferGetServerSidePropsType} from 'next'
 import {ExperienceType, ProjectType, SkillType} from '@controllers/Notion/types'
 import {fetcher} from '../src/utils'
 import {Tooltip} from '@components/atoms/Tooltip'
+import Image from "next/image";
 
 type Fetcher = {
     projects: ProjectType[]
@@ -63,26 +64,28 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
                 </article>
                 <article id="parcours">
                     <Title black>Parcours scolaire 🏫</Title>
-                    <div className="flex flex-wrap pb-4">
+                    <section className="flex flex-wrap pb-4">
                         <div className='w-full lg:w-1/2 shrink-0 p-4 snap-center'>
-                            <div className="bg-white shadow-xl rounded-xl p-6 flex flex-col gap-4 h-full">
+                            <article className="bg-white shadow-xl rounded-xl p-6 flex flex-col gap-4 h-full">
                                 <header className='flex items-center space-x-4'>
                                     <span
                                         className='rounded-full flex justify-center items-center bg-yellow-400 h-10 w-10 text-xl'>🏫</span>
                                     <div>
-                                        <h3 className='text-2xl font-cursive leading-relaxed'>Dut Informatique (bac
-                                            +2)</h3>
-                                        <p className='text-yellow-400 text-sm uppercase tracking-wide'>IUT A Villeneuve
+                                        <h3 className='text-2xl font-cursive leading-relaxed'>Dut Informatique</h3>
+                                        <p className='text-yellow-400 uppercase tracking-wide'>IUT A Villeneuve
                                             d'Ascq</p>
                                     </div>
                                 </header>
-                                <p className='text-gray-700 text-sm whitespace-normal text-justify leading-relaxed line-clamp-5'>
-                                    L'IMT Nord Europe est une école d'ingénieur située à Lille (Villeneuve d'Ascq).
-                                </p>
-                            </div>
+                                <div
+                                    className='text-gray-600 text-sm whitespace-normal text-justify leading-relaxed line-clamp-5'>
+                                    <p className="font-bold">⚙️ Java, C, JavaScript, Cobol</p>
+                                    <p className="font-bold">✍🏻 Droit, Comptabilité, Mathématiques, Graphes,
+                                        Communication, Gestion de projet</p>
+                                </div>
+                            </article>
                         </div>
                         <div className='w-full lg:w-1/2 shrink-0 p-4 snap-center'>
-                            <div
+                            <article
                                 className="bg-white shadow-xl rounded-xl p-6 flex flex-col gap-4 h-full border-4 border-yellow-300 shadow-lg shadow-yellow-300/50">
                                 <header className='flex items-center space-x-4'>
                                     <span
@@ -90,16 +93,18 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
                                     <div>
                                         <h3 className='text-2xl font-cursive leading-relaxed'>Ingénieur
                                             Informatique</h3>
-                                        <p className='text-yellow-400 text-sm uppercase tracking-wide'>IMT Nord
+                                        <p className='text-yellow-400 uppercase tracking-wide'>IMT Nord
                                             Europe</p>
                                     </div>
                                 </header>
-                                <p className='text-gray-700 text-sm whitespace-normal text-justify leading-relaxed whitespace-normal'>
-                                    L'IMT Nord Europe est une école d'ingénieur située à Lille (Villeneuve d'Ascq).
-                                </p>
-                            </div>
+                                <div
+                                    className='text-gray-700 text-sm whitespace-normal text-justify leading-relaxed whitespace-normal'>
+                                    <p className="font-bold">⚙️ Java, C, JavaScript/TypeScript, Flutter, IA, Machine Learning</p>
+                                    <p className="font-bold">✍🏻 Droit, Gestion et Management de Projet</p>
+                                </div>
+                            </article>
                         </div>
-                    </div>
+                    </section>
                 </article>
                 <article id="experiences">
                     <Title black>Expériences professionnelles 💻</Title>
@@ -118,13 +123,19 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
                         className='bg-gradient-to-br from-[#ffbf00] to-[#ffd447] shadow-lg flex flex-wrap justify-start gap-8 shadow-amber-400 p-4 rounded-xl'>
                         {skills
                             .filter(({isFavorite}) => isFavorite)
-                            .map(({label, imageUrl}, key) => (
-                                <Tooltip content={label} offset={4} key={key}>
-                                    <img
-                                        className='w-16 h-16 bg-white object-contain p-2 rounded-lg'
-                                        src={imageUrl}
-                                        alt={label}
-                                    />
+                            .map(({label, imageUrl}) => (
+                                <Tooltip content={label} offset={4} key={label}>
+                                    <div className='relative p-2 aspect-square bg-white rounded-lg overflow-hidden'
+                                         key={label}>
+                                        <Image
+                                            loading='lazy'
+                                            width='48'
+                                            height='48'
+                                            className='object-contain'
+                                            src={imageUrl}
+                                            alt={label}
+                                        />
+                                    </div>
                                 </Tooltip>
                             ))}
                     </article>
@@ -132,13 +143,19 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
                 <article className='py-4 flex justify-center flex-wrap lg:mx-64 my-4 gap-8'>
                     {skills
                         .filter(({isFavorite}) => !isFavorite)
-                        .map(({label, imageUrl}, key) => (
-                            <Tooltip content={label} offset={4} key={key}>
-                                <img
-                                    className='w-16 h-16 bg-white object-contain p-2 rounded-lg'
-                                    src={imageUrl}
-                                    alt={label}
-                                />
+                        .map(({label, imageUrl}) => (
+                            <Tooltip content={label} offset={4} key={label}>
+                                <div className='relative p-2 aspect-square bg-white rounded-lg overflow-hidden'
+                                     key={label}>
+                                    <Image
+                                        loading='lazy'
+                                        width='48'
+                                        height='48'
+                                        className='object-contain'
+                                        src={imageUrl}
+                                        alt={label}
+                                    />
+                                </div>
                             </Tooltip>
                         ))}
                 </article>
@@ -146,14 +163,13 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
             <footer id='contact' className='bg-black flex place-items-center text-center flex-col px-8 py-4 pt-16'>
                 <Title>
                     Me contacter par{' '}
-                    <a
-                        className='border hover:bg-white text-white hover:text-black transition-all border-white rounded p-2 leading-none'
-                        href='mailto:hugo.derigny@gmail.com'
-                    >
-                        mail
+                    <a href='mailto:hugo.derigny@gmail.com'
+                       title='Contact par mail'
+                       className="before:block before:absolute before:transition-all before:-inset-1 hover:before:mt-2 before:mt-8 before:bg-orange-400 relative inline-block">
+                        <span className="relative text-white">mail</span>
                     </a>
                     <span>ou sur</span>
-                    <a href='https://www.linkedin.com/in/hugo-derigny/' rel='noopener noreferrer'>
+                    <a href='https://www.linkedin.com/in/hugo-derigny/' title='Contact par LinkedIn' rel='noopener noreferrer'>
                         <svg
                             className='w-12 h-12 text-gray-200 hover:text-blue-500 transition cursor-pointer'
                             fill='currentColor'
