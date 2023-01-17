@@ -6,6 +6,7 @@ import {ExperienceType, ProjectType, SkillType} from '@controllers/Notion/types'
 import {fetcher} from '../src/utils'
 import {Tooltip} from '@components/atoms/Tooltip'
 import Image from "next/image";
+import gif from '@assets/Hugo DERIGNY.gif'
 
 type Fetcher = {
     projects: ProjectType[]
@@ -44,6 +45,14 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
                         ma vie future. Je suis ouvert à tout type de poste, full-remote comme présentiel, à Lille et ses
                         alentours ou bien à Paris.
                     </p>
+                    <div className="py-4 mx-auto">
+                        <a href='/assets/Hugo%20DERIGNY.pdf' className="flex flex-col hover:shadow-[8px_8px_0px_0px_#fc6976] transition-all">
+                            <figure className="relative w-72 h-96 bg-[#4300F6] self-start py-0">
+                                <Image src={gif} layout='fill' alt='CV animé' className='object-cover'/>
+                            </figure>
+                            <figcaption className='text-center bg-[#4300F6] w-72 font-semibold text-white py-2'>Télécharger mon CV</figcaption>
+                        </a>
+                    </div>
                 </article>
             </section>
             <div className='h-16 w-full bg-blue-900 absolute skew-y-2 -mt-8'/>
