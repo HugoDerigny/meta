@@ -46,7 +46,7 @@ export const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = 
                         alentours ou bien à Paris.
                     </p>
                     <div className="py-4 mx-auto">
-                        <a href='/assets/Hugo%20DERIGNY.pdf' className="flex flex-col hover:shadow-[8px_8px_0px_0px_#fc6976] transition-all">
+                        <a target='_blank' href='/assets/Hugo%20DERIGNY.pdf' className="flex flex-col hover:shadow-[8px_8px_0px_0px_#fc6976] transition-all">
                             <figure className="relative w-72 h-96 bg-[#4300F6] self-start py-0">
                                 <Image src={gif} layout='fill' alt='CV animé' className='object-cover'/>
                             </figure>

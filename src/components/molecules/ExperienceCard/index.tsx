@@ -46,7 +46,7 @@ function parseNotionRichTextToHTML(richText: RichTextType) {
 
 export function ExperienceCard({experience: {label, company, companyLogo, to, from, summary}}: Props) {
     return (
-        <li className='snap-center flex w-1/3 flex-shrink-0 relative self-start snap-always'>
+        <li className='snap-center px-4 w-full lg:w-1/3 flex-shrink-0 relative self-start snap-always mx-auto'>
             <div
                 className="bg-indigo-600 absolute left-1/2 w-6 h-6 aspect-square flex items-center mt-2 z-20 relative justify-center rounded-full">
                 <svg aria-hidden="true" focusable="false" data-prefix="fas"
