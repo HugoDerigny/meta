@@ -78,6 +78,7 @@ export function Landing() {
 				<h2 className='text-stone-300 text-2xl text-center'>web engineer</h2>
 				<nav className='pt-8 flex space-x-8 justify-center'>
 					<Link
+						title='Mon Github'
 						href='https://github.com/HugoDerigny'
 						target='_blank'
 						rel='noreferer noopener'
@@ -86,6 +87,7 @@ export function Landing() {
 						<Github />
 					</Link>
 					<Link
+						title='Mon LinkedIn'
 						href='https://www.linkedin.com/in/hugo-derigny'
 						target='_blank'
 						rel='noreferer noopener'
@@ -94,6 +96,7 @@ export function Landing() {
 						<LinkedIn />
 					</Link>
 					<Link
+						title='Envoyer un mail'
 						href='mailto:hugo.derigny@gmail.com'
 						target='_blank'
 						rel='noreferer noopener'

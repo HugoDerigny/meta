@@ -12,7 +12,7 @@ export async function SkillList() {
 						<figure className='relative bg-transparent'>
 							<img
 								src={skill.imageUrl}
-								alt={skill.label}
+								alt={'Logo de ' + skill.label}
 								className='size-8 object-contain mix-blend-multiply rounded'
 							/>
 						</figure>

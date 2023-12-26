@@ -27,6 +27,7 @@ export function Sidemenu() {
 			<button
 				type='button'
 				name='open-menu'
+				title='Ouvrir le menu'
 				onClick={() => setIsOpen(true)}
 				className='fixed top-4 left-4 text-stone-200 text-7xl z-20'
 			>

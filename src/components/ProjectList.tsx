@@ -6,7 +6,7 @@ export async function ProjectList() {
 	const projects = await GetProjects()
 
 	return (
-		<ul className='flex overflow-auto snap-x snap-mandatory gap-4 pb-8 px-8 md:px-16 lg:px-32 xl:px-64'>
+		<section className='flex overflow-auto snap-x snap-mandatory gap-4 pb-8 px-8 md:px-16 lg:px-32 xl:px-64'>
 			{projects.map((project, index) => (
 				<Link
 					href={project.url}
@@ -44,6 +44,6 @@ export async function ProjectList() {
 					</footer>
 				</Link>
 			))}
-		</ul>
+		</section>
 	)
 }
