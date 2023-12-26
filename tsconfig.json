@@ -8,9 +8,15 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@controllers/*": ["src/controllers/*"],
-      "@assets/*": ["src/assets/*"],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@controllers/*": [
+        "src/controllers/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ]
     },
     "allowJs": true,
     "skipLibCheck": true,
@@ -23,14 +29,20 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
-  ],
+  ]
 }

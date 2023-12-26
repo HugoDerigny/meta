@@ -1,6 +1,6 @@
-import {Client} from '@notionhq/client'
-import {ExperienceType, ProjectType, SkillType} from './types'
-import {QueryDatabaseResponse} from '@notionhq/client/build/src/api-endpoints'
+import { Client } from '@notionhq/client'
+import { ExperienceType, ProjectType, SkillType } from './types'
+import { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 
 const { NOTION_API_KEY: auth } = process.env
 
@@ -48,23 +48,21 @@ export async function GetExperiences(): Promise<ExperienceType[]> {
 	try {
 		const response: QueryDatabaseResponse = await notion.databases.query({
 			database_id: '5c74ef1edbe64fc38c9e161e0acdef28',
-			sorts: [{property: 'From', direction: "ascending"}],
+			sorts: [{ property: 'From', direction: 'descending' }],
 			filter: { property: 'Visible', checkbox: { equals: true } },
 		})
 
 		// @ts-ignore
-		console.log(`🐞 meta/src/controllers/Notion/index.ts [l.56]`, response.results[0].properties.Summary.rich_text)
 
 		// @ts-ignore
-		return response.results.map(({properties: {Label, Summary, Company, From, To, CompanyLogo }}) =>
-			({
-				label: Label.title[0].text.content,
-				summary: Summary.rich_text,
-				company: Company.rich_text[0].text.content,
-				from: From.date.start,
-				to: To.date.start,
-				companyLogo: CompanyLogo.files[0]?.external?.url ?? CompanyLogo.files[0]?.file?.url
-			}))
+		return response.results.map(({ properties: { Label, Summary, Company, From, To, CompanyLogo } }) => ({
+			label: Label.title[0].text.content,
+			summary: Summary.rich_text,
+			company: Company.rich_text[0].text.content,
+			from: From.date.start,
+			to: To.date.start,
+			companyLogo: CompanyLogo.files[0]?.external?.url ?? CompanyLogo.files[0]?.file?.url,
+		}))
 	} catch (e) {
 		return []
 	}
