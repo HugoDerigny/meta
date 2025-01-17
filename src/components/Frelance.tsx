@@ -1,6 +1,4 @@
-import { ExperienceBackground } from './ExperienceBackground'
 import { TextDecoration } from '@components/TextDecoration'
-import { ExperienceList } from '@components/ExperienceList'
 import { FreelanceBackground } from '@components/FreelanceBackground'
 import Link from 'next/link'
 

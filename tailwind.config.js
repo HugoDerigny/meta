@@ -1,5 +1,3 @@
-const colors = require('tailwindcss/colors')
-
 module.exports = {
 	content: ['./src/**/*.{html,js,jsx,ts,tsx}', './app/**/*.{html,js,jsx,ts,tsx}'],
 	theme: {
@@ -9,5 +7,8 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [],
+	plugins: [
+		require('@tailwindcss/typography')
+		// ...
+	]
 }
